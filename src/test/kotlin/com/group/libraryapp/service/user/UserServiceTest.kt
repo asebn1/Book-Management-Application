@@ -53,9 +53,9 @@ class UserServiceTest @Autowired constructor(
         val results = userService.getUsers()
 
         // then
-        AssertionsForInterfaceTypes.assertThat(results).hasSize(2) // [UserResponse(), UserResponse()]
+        AssertionsForInterfaceTypes.assertThat(results).hasSize(2)
         AssertionsForInterfaceTypes.assertThat(results).extracting("name")
-            .containsExactlyInAnyOrder("A", "B") // ["A", "B"]
+            .containsExactlyInAnyOrder("A", "B")
         AssertionsForInterfaceTypes.assertThat(results).extracting("age").containsExactlyInAnyOrder(20, null)
     }
 
@@ -64,7 +64,7 @@ class UserServiceTest @Autowired constructor(
     fun updateUserNameTest() {
         // given
         val savedUser = userRepository.save(User("A", null))
-        val request = UserUpdateRequest(savedUser.id, "B")
+        val request = UserUpdateRequest(savedUser.id!!, "B")
 
         // when
         userService.updateUserName(request)
