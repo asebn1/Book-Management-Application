@@ -67,7 +67,7 @@ class UserServiceTest @Autowired constructor(
         val request = UserUpdateRequest(savedUser.id!!, "B")
 
         // when
-        userService.updateUserName(request)
+        userService.updateUsername(request)
 
         // then
         val result = userRepository.findAll()[0]
